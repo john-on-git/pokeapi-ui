@@ -21,48 +21,48 @@ export type PokemonType = (
     "???"
 );
 
-export default function colorFor(type: PokemonType): `#${string}` {
+export default function colorFor(type: PokemonType): {noHover: `#${string}`, onHover: `#${string}`} {
     switch(type)
     {
         case "normal":
-            return "#B7B8A8";
+            return {noHover: "#B7B8A8", onHover: "#9c9e87"};
         case "fire":
-            return "#EA9447";
+            return {noHover: "#EA9447", onHover: "#d17d34"};
         case "fighting":
-            return "#E67974";
+            return {noHover: "#E67974", onHover: "#cc615b"};
         case "water":
-            return "#7594CA";
+            return {noHover: "#7594CA", onHover: "#5d7baf"};
         case "flying":
-            return "#77C5EB";
+            return {noHover: "#77C5EB", onHover: "#60abd1"};
         case "grass":
-            return "#AACF89";
+            return {noHover: "#AACF89", onHover: "#8fb56e"};
         case "poison":
-            return "#BE97C4";
+            return {noHover: "#BE97C4", onHover: "#a47baa"};
         case "electric":
-            return "#E1E14D";
+            return {noHover: "#E1E14D", onHover: "#c6c639"};
         case "ground":
-            return "#C19F57";
+            return {noHover: "#C19F57", onHover: "#a88843"};
         case "psychic":
-            return "#D85299";
+            return {noHover: "#D85299", onHover: "#bf3f83"};
         case "rock":
-            return "#C19F57";
+            return {noHover: "#C19F57", onHover: "#a88843"};
         case "ice":
-            return "#77C7C6";
+            return {noHover: "#77C7C6", onHover: "#5fadac"};
         case "bug":
-            return "#A8C78C";
+            return {noHover: "#A8C78C", onHover: "#8dad70"};
         case "dragon":
-            return "#7594CA";
+            return {noHover: "#7594CA", onHover: "#5d7baf"};
         case "ghost":
-            return "#8474B3";
+            return {noHover: "#8474B3", onHover: "#6b5b99"};
         case "dark":
-            return "#8E8888";
+            return {noHover: "#8E8888", onHover: "#756a6a"};
         case "steel":
-            return "#B8B9CE";
+            return {noHover: "#B7B8A8", onHover: "#9c9e87"};
         case "fairy":
-            return "#B7B8A8";
+            return {noHover: "#B8B9CE", onHover: "#9899b5"};
         case "stellar":
-            return "#DAB0D4";
+            return {noHover: "#DAB0D4", onHover: "#bf91b8"};
         case "???":
-            return "#A3C3B8";
+            return {noHover: "#A3C3B8", onHover: "#84a89b"};
     }
 }

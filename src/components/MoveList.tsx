@@ -3,33 +3,19 @@ import { PokemonMove } from "../interfaces/PokemonMove";
 import './MoveList.css'
 import colorFor from "../interfaces/PokemonType";
 import { useState, useEffect } from "react";
+import { Pokemon } from "../interfaces/Pokemon";
 
 interface Props {
-    pokemonName: string;
+    pokemon: Pokemon;
 }
 
-export default function MoveList({pokemonName}:Props) {
+export default function MoveList({pokemon}:Props) {
     const [moves, setMoves] = useState<PokemonMove[]>([]);
     useEffect(() => {
         //get the list of moves for the pokemon
         async function FetchMoves() {
             //get all the move names & data sources
-            const moveURLs: string[] = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`).then(
-                async (res)=>{
-                    if(res.ok)
-                    {
-                        const pokemon = await res.json();
-                        console.log(pokemon);
-                        return pokemon.moves.map((move: {move: {name:string, url:string}, version_group_details:any[]}) => move.move.url);
-                    }
-                    else  {
-                        return [];
-                    }
-                },
-                (_) => {
-                    return [];
-                }
-                );
+            const moveURLs: string[] = pokemon.moves.map((move: {move: {name:string, url:string}, version_group_details:any[]}) => move.move.url);
             //get the data for each move, and transform it into our format
             const moveData = await Promise.all(moveURLs.map(moveURL => fetch(moveURL))).then(
                 async (responses) => {
@@ -55,9 +41,6 @@ export default function MoveList({pokemonName}:Props) {
                         }
                     }
                     return moveData;
-                },
-                (_) => {
-                    return null;
                 }
             );
             if(moveData!==null) {
@@ -65,7 +48,7 @@ export default function MoveList({pokemonName}:Props) {
             }
         }
         FetchMoves();
-    }, [pokemonName]);
+    }, [pokemon]);
 
     return (
         <>
@@ -75,7 +58,7 @@ export default function MoveList({pokemonName}:Props) {
                     return <Accordion
                         key={index}
                         title={move.name}
-                        colorOverride = {colorFor(move.type)}
+                        overrideColors = {colorFor(move.type)}
                         content={ //convert the object into an HTML table
                             <table>
                                 <tbody>

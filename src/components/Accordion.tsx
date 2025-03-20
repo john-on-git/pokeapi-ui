@@ -4,7 +4,10 @@ import './Accordion.css';
 interface Props {
     title: string;
     content: ReactNode;
-    colorOverride?: `#${string}`;
+    overrideColors?: {
+        noHover: `#${string}`;
+        onHover: `#${string}`;
+    };
 }
 
 /*
@@ -13,11 +16,19 @@ interface Props {
         2. table styling
 */
 
-export default function Accordion({title, content, colorOverride: backgroundColor }:Props) {
+export default function Accordion({title, content, overrideColors }:Props) {
     const [isOpen, setIsOpen] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     return (
         <div className={"accordion " + (isOpen ? "accordion-open" : "accordion-closed")}> {/*closed*/}
-            <button type="button" style={backgroundColor && {backgroundColor: backgroundColor}}className={"accordion-header"} onClick={() => setIsOpen(!isOpen)}>
+            <button
+                type="button"
+                style={overrideColors && (isHovered ? {backgroundColor: overrideColors.onHover} : {backgroundColor: overrideColors.noHover})}
+                className={"accordion-header"}
+                onClick={() => setIsOpen(!isOpen)}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
                 {title}
             </button>
 
