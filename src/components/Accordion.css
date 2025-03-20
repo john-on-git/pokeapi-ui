@@ -1,0 +1,57 @@
+.accordion-header {
+    background-color: crimson;
+    transition: background-color 0.25s;
+
+    width: 100%;
+    
+    padding-top: 6pt;
+    padding-bottom: 6pt;
+    margin: 0;
+
+    font-size: 1.35rem;
+    font-weight: bold;
+
+    -webkit-text-stroke: 4pt rgb(15, 15, 15);
+    paint-order: stroke fill;
+}
+.accordion-header:hover {
+    background-color: #9a0422;
+}
+
+.accordion-open > .accordion-header {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    
+    border-top-left-radius: 10pt;
+    border-top-right-radius: 10pt;
+    
+    border: 3pt solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0;
+
+    padding-bottom: 9pt; /*to replace the space occupied by the border. a transparent will case a diagonal shape in the corners as the side borders don't reach the bottom*/
+}
+.accordion-closed > .accordion-header {
+    border-radius: 10pt;
+    
+    border: 3pt solid rgba(0, 0, 0, 0.2);
+}
+
+.accordion-body {
+    background-color: white;
+
+    color: black;
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    border: 3pt solid rgba(0, 0, 0, 0.2);
+    border-top: 0;
+
+    border-bottom-left-radius: 10pt;
+    border-bottom-right-radius: 10pt;
+}
+
+.accordion-body table {
+    margin-left: auto;
+    margin-right: auto;
+}
