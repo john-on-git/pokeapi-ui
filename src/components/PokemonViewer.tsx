@@ -9,21 +9,19 @@ import './PokemonViewer.css';
 export default function PokemonViewer() {
     
     /*
-        <SpriteDisplay/>
         <CryPlayer/>
         <MoveList/>
         <StatList/>
-    </>
     */
 
-    const [pokemonName, setPokemonName] = useState<string>("pikachu"); //use mew for movelist testing because it can learn moves of every type
+    const [pokemonName, setPokemonName] = useState<string>("mew"); //use mew for movelist testing because it can learn moves of every type
     const [pokemon, setPokemon] = useState<Pokemon | null>(null);
     useEffect(() => {
         async function FetchPokemon() {
             await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`).then(
                 async (response) => {
                     if(response.ok) {                    
-                        setPokemon(await response.json());
+                        setPokemon(await response.json());  
                     }
                 }
             );
