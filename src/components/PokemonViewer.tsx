@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MovesContext } from '../components/Contexts';
 import MoveList from '../components/MoveList';
 import { PokemonMove } from '../interfaces/PokemonMove';
+import PokemonNameDisplay from './PokemonNameDisplay';
 
 export default function PokemonViewer() {
     
@@ -75,6 +76,7 @@ export default function PokemonViewer() {
 
     return (
         <div className="pokemon-viewer">
+            <PokemonNameDisplay name={pokemonName}/>
             <MovesContext value={moves}>
                 <MoveList/>
             </MovesContext>
