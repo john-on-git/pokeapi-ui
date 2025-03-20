@@ -1,18 +1,22 @@
 .move-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex: 1;
 
     margin-left: auto;
     margin-right: auto;
 
-    max-height: 100vh;
-    overflow-y: scroll;
-    
-    width: fit-content;
+    border: 10pt solid white;
+    border-right: 0;
+    padding-right: 10pt;
 
+    max-height: 100%;
 
-    padding: 10pt;
     background-color: white;
     border-radius: 10pt;
+
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+.move-list > * {
+    scroll-snap-align: start;
+    margin-bottom: 1rem;
 }

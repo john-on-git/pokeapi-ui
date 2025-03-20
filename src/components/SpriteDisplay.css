@@ -1,0 +1,13 @@
+.sprite-display {
+    flex: 1;
+
+    height: 80%;
+
+    background-color: white;
+    border-radius: 10pt;
+}
+
+.sprite-display > img {
+    height: 100%;
+    image-rendering: crisp-edges;
+}

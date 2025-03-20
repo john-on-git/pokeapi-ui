@@ -1,3 +1,4 @@
+import { PokeAPIMoveURL } from "./PokeAPIURLs";
 import { PokemonType } from "./PokemonType";
 
 export interface PokemonMove {
@@ -7,4 +8,11 @@ export interface PokemonMove {
     damageClass: ("status" | "physical" | "special");
     power: number;
     pp: number;
+}
+
+export interface PokemonMoveProvider { //from API data, provides URL needed to get full move data
+    move: {
+        name: string; 
+        url: PokeAPIMoveURL;
+    };
 }

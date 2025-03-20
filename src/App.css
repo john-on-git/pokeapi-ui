@@ -1,7 +1,17 @@
 #root {
   margin: 0 auto;
+  
   padding: 2rem;
+  box-sizing: border-box;
+
   text-align: center;
+}
+
+@media (orientation: landscape) {
+  #root {
+    height: 100vh;
+    overflow-y: hidden;
+  }
 }
 
 .logo {

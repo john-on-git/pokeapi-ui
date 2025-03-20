@@ -1,0 +1,31 @@
+@media (orientation: landscape) {
+    .pokemon-viewer {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+    .pokemon-viewer > * {
+        max-height: calc(100vh - 4rem);
+    }
+
+    .pokemon-viewer-mid-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        flex: 3;
+    }
+
+    .placeholder-stat-col {
+        flex: 1;
+        background-color: darkblue;
+        color: white;
+        font-size: 2rem;
+    }
+    .placeholder-form-select {
+        height: 10vh;
+        background-color: darkred;
+        color: white;
+        font-size: 2rem;
+    }
+}

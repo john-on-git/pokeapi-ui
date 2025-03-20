@@ -1,23 +1,21 @@
 import Accordion from "./Accordion";
-import { PokemonMove } from "../interfaces/PokemonMove";
+import { PokemonMove, PokemonMoveProvider } from "../interfaces/PokemonMove";
 import './MoveList.css'
 import colorFor from "../interfaces/PokemonType";
 import { useState, useEffect } from "react";
-import { Pokemon } from "../interfaces/Pokemon";
 
 interface Props {
-    pokemon: Pokemon;
+    moveProviders: PokemonMoveProvider[];
 }
 
-export default function MoveList({pokemon}:Props) {
+export default function MoveList({moveProviders}:Props) {
     const [moves, setMoves] = useState<PokemonMove[]>([]);
     useEffect(() => {
         //get the list of moves for the pokemon
         async function FetchMoves() {
             //get all the move names & data sources
-            const moveURLs: string[] = pokemon.moves.map((move: {move: {name:string, url:string}, version_group_details:any[]}) => move.move.url);
             //get the data for each move, and transform it into our format
-            const moveData = await Promise.all(moveURLs.map(moveURL => fetch(moveURL))).then(
+            const moveData = await Promise.all(moveProviders.map((moveProvider: PokemonMoveProvider) => fetch(moveProvider.move.url))).then(
                 async (responses) => {
                     let moveData: PokemonMove[] = []
                     for(const response of responses)
@@ -48,42 +46,41 @@ export default function MoveList({pokemon}:Props) {
             }
         }
         FetchMoves();
-    }, [pokemon]);
+    }, [moveProviders]);
 
     return (
         <>
             <div className="move-list">
-                {moves.map((move, index) => {
-                    console.log("callbackfn", move);
-                    return <Accordion
-                        key={index}
-                        title={move.name}
-                        overrideColors = {colorFor(move.type)}
-                        content={ //convert the object into an HTML table
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td className="bold">Type</td>
-                                        <td>{move.type}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bold">Category</td>
-                                        <td>{move.damageClass}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bold">Power</td>
-                                        <td>{move.power}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="bold">PP</td>
-                                        <td>{move.pp}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        }
-                    />
-                }
-                )}
+                    {moves.map((move, index) => {
+                        return <Accordion
+                            key={index}
+                            title={move.name}
+                            overrideColors = {colorFor(move.type)}
+                            content={ //convert the object into an HTML table
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td className="bold">Type</td>
+                                            <td>{move.type}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="bold">Category</td>
+                                            <td>{move.damageClass}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="bold">Power</td>
+                                            <td>{move.power}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="bold">PP</td>
+                                            <td>{move.pp}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            }
+                        />
+                    }
+                    )}
             </div>
         </>
     );

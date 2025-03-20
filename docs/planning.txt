@@ -1,0 +1,5 @@
+1. Ok, I need to look at the TODO list and figure out any task dependencies.
+2. I should try to estimate the time to completion, and then look at the actual time taken afterwards to see if I was right.
+	+ 
+3. I need to think of this as a potential blog post. So far I've just done the Udemy academy, so this is a good time to start taking notes.
+4. I've been really flying cowboy/blind with a combination of vibes stack & stack.
