@@ -51,6 +51,7 @@ export default function MoveList({moveProviders}:Props) {
     return (
         <>
             <div className="move-list">
+                <h2>Moves</h2>
                     {moves.map((move, index) => {
                         return <Accordion
                             key={index}
