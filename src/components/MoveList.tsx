@@ -49,9 +49,9 @@ export default function MoveList({moveProviders}:Props) {
     }, [moveProviders]);
 
     return (
-        <>
-            <div className="move-list">
-                <h2>Moves</h2>
+        <div className="move-list">
+            <h2>moves</h2>
+            <div className="move-list-panel">
                     {moves.map((move, index) => {
                         return <Accordion
                             key={index}
@@ -83,6 +83,6 @@ export default function MoveList({moveProviders}:Props) {
                     }
                     )}
             </div>
-        </>
+        </div>
     );
 }

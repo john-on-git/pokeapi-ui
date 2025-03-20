@@ -1,4 +1,19 @@
 .move-list {
+    max-height: 100%;
+}
+
+.move-list > h2 {
+    height: 10%;
+    padding: 0;
+    margin: 0;
+
+    font-size: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.move-list-panel {
     flex: 1;
 
     margin-left: auto;
@@ -6,17 +21,18 @@
 
     border: 10pt solid white;
     border-right: 0;
+    box-sizing: border-box;
     padding-right: 10pt;
-
-    max-height: 100%;
 
     background-color: white;
     border-radius: 10pt;
 
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+
+    height: 90%;
 }
-.move-list > * {
+.move-list-panel > * {
     scroll-snap-align: start;
     margin-bottom: 1rem;
 }
