@@ -4,10 +4,32 @@
 .stats-display table {
     margin-top: 10pt;
     margin-bottom: 10pt;
-    
+
     margin-left: 20pt;
     margin-right: 20pt;
 }
 .stats-display td {
     text-align: right;
+}
+
+.hp {
+    color: darkgreen;
+}
+.attack {
+    color: goldenrod;
+}
+
+.defense {
+    color: darkorange;
+}
+
+.special-attack {
+    color: darkcyan;
+}
+
+.special-defense {
+    color: royalblue;
+}
+.speed {
+    color: darkmagenta;
 }
