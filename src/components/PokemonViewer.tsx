@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import MoveList from '../components/MoveList';
-import PokemonNameDisplay from './PokemonNameDisplay';
 import { Pokemon } from '../interfaces/Pokemon';
 import { SpriteDisplay } from './SpriteDisplay';
-import { PokeAPIPokemonSpriteURL } from '../interfaces/PokeAPIURLs';
 import './PokemonViewer.css';
 import PokemonNameSearch from './PokemonNameSearch';
 import BaseStatsDisplay from './BaseStatsDisplay';

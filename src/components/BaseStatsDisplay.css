@@ -1,5 +1,5 @@
 .stats-display {
-    min-width: fit-content;
+    max-width: 25vw;
 }
 .stats-display table {
     margin-top: 10pt;
