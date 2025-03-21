@@ -15,9 +15,9 @@ export default function MoveList({moveProviders}:Props) {
         async function FetchMoves() {
             //get all the move names & data sources
             //get the data for each move, and transform it into our format
-            const moveData = await Promise.all(moveProviders.map((moveProvider: PokemonMoveProvider) => fetch(moveProvider.move.url))).then(
+            const moveData: PokemonMove[] = [];
+            await Promise.all(moveProviders.map((moveProvider: PokemonMoveProvider) => fetch(moveProvider.move.url))).then(
                 async (responses) => {
-                    let moveData: PokemonMove[] = []
                     for(const response of responses)
                     {   
                         if(response.ok)
@@ -41,9 +41,7 @@ export default function MoveList({moveProviders}:Props) {
                     return moveData;
                 }
             );
-            if(moveData!==null) {
-                setMoves(moveData); //remove any moves we failed to get
-            }
+            setMoves(moveData); //remove any moves we failed to get
         }
         FetchMoves();
     }, [moveProviders]);

@@ -9,6 +9,7 @@
     }
 
     .pokemon-viewer-mid-col {
+
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -28,4 +29,31 @@
         color: white;
         font-size: 2rem;
     }
+}
+
+.bubble-container {
+    background-color: white;
+    border: 3pt solid #0000001a;
+    border-radius: 10pt;
+}
+
+.poke-button {
+    background-color: crimson;
+    transition: background-color 0.25s;
+    
+    padding-top: 6pt;
+    padding-bottom: 6pt;
+    margin: 0;
+
+    font-size: 1.35rem;
+    font-weight: bold;
+
+    -webkit-text-stroke: 4pt rgb(15, 15, 15);
+    paint-order: stroke fill;
+    
+    border: 3pt solid rgba(0, 0, 0, 0.2);
+    border-radius: 10pt;
+}
+.poke-button:hover {
+    background-color: #9a0422;
 }

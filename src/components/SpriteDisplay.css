@@ -1,13 +1,33 @@
 .sprite-display {
-    flex: 1;
-
-    height: 80%;
+    height: 80vh;
 
     background-color: white;
     border-radius: 10pt;
 }
 
-.sprite-display > img {
+.sprite-display > img, .noimg {
     height: 100%;
     image-rendering: crisp-edges;
+
+    filter: drop-shadow(10px 10px 10px darkgrey);
+
+}
+.sprite-display > img {
+    cursor: pointer;
+}
+
+@keyframes shake {
+    0% {
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-4deg);
+    }
+    100% {
+    }
+}
+.sprite-display > img:hover {
+    animation: 1s shake linear 0s infinite;
 }
