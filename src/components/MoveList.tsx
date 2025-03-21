@@ -66,10 +66,14 @@ export default function MoveList({moveProviders}:Props) {
                                             <td className="bold">Category</td>
                                             <td>{move.damageClass}</td>
                                         </tr>
-                                        <tr>
-                                            <td className="bold">Power</td>
-                                            <td>{move.power}</td>
-                                        </tr>
+                                        {
+                                            move.power===null ? 
+                                            null : 
+                                            <tr>
+                                                <td className="bold">Power</td>
+                                                <td>{move.power}</td>
+                                            </tr>
+                                        }
                                         <tr>
                                             <td className="bold">PP</td>
                                             <td>{move.pp}</td>

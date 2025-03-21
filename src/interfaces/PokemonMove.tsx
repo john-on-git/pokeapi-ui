@@ -6,7 +6,7 @@ export interface PokemonMove {
 
     type: PokemonType;
     damageClass: ("status" | "physical" | "special");
-    power: number;
+    power: (number | null);
     pp: number;
 }
 
