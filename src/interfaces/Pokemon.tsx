@@ -8,4 +8,12 @@ export interface Pokemon { //is a subset of the API data structure and should re
         front_default: PokeAPIPokemonSpriteURL;
         //and more
     };
+    stats: {
+        base_stat:number, 
+        effort:number, 
+        stat: {
+            name: string,
+            url:string
+        }
+    }[];
 }

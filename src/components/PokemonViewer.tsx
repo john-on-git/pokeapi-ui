@@ -6,6 +6,7 @@ import { SpriteDisplay } from './SpriteDisplay';
 import { PokeAPIPokemonSpriteURL } from '../interfaces/PokeAPIURLs';
 import './PokemonViewer.css';
 import PokemonNameSearch from './PokemonNameSearch';
+import BaseStatsDisplay from './BaseStatsDisplay';
 
 export default function PokemonViewer() {
     
@@ -16,7 +17,7 @@ export default function PokemonViewer() {
     */
 
     const [searchAutocomplete, setSearchAutocomplete] = useState<Map<string,Set<string>>>(new Map<string,Set<string>>()); //contains substrings of all pokemon names, and the corresponding autocomplete possibilites. Map is faster than Object for n≈1000 according to the data in this article https://www.zhenghao.io/posts/object-vs-map
-    const [pokemonName, setPokemonName] = useState<string>("mew"); //use mew for movelist testing because it can learn moves of every type
+    const [pokemonName, setPokemonName] = useState<string>("pikachu"); //use mew for movelist testing because it can learn moves of every type
     const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
     useEffect(() => {
@@ -81,9 +82,7 @@ export default function PokemonViewer() {
                     Placeholder Form Select
                 </div>
             </div>
-            <div className="placeholder-stat-col"> {/*stats list will go here*/}
-                <p>Placeholder Stats</p>
-            </div>
+            <BaseStatsDisplay stats={pokemon===null ? null : pokemon.stats}/>
         </div>
     );
 }

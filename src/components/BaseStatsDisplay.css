@@ -1,0 +1,13 @@
+.stats-display {
+    min-width: fit-content;
+}
+.stats-display table {
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    
+    margin-left: 20pt;
+    margin-right: 20pt;
+}
+.stats-display td {
+    text-align: right;
+}

@@ -35,7 +35,7 @@ export default function PokemonNameSearch({pokemonName, setPokemonNameCallbackFn
                 <h1 className="pokemon-search">Pokémon Search</h1>
                 <div className="name-input-wrapper">
                     <input
-                        className="name-search"
+                        className="name-search bold"
                         type="text"
                         value = {pokemonName}
                         onChange={(e) => {

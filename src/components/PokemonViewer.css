@@ -33,7 +33,7 @@
 
 .bubble-container {
     background-color: white;
-    border: 3pt solid #0000001a;
+    /*border: 3pt solid #0000001a;*/
     border-radius: 10pt;
 }
 
@@ -56,4 +56,8 @@
 }
 .poke-button:hover {
     background-color: #9a0422;
+}
+
+h2 {
+    font-size: 2rem;
 }
