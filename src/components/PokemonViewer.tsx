@@ -56,11 +56,13 @@ export default function PokemonViewer() {
             else {
                 await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`).then(
                     async (res) => {
-                        if(res.ok) {                    
-                            setPokemon(await res.json());  
+                        if(res.ok) {
+                            const newPokemon = await res.json();                 
+                            if(newPokemon!=null) { 
+                                setPokemon(newPokemon);
+                            }
                         }
-                        else {                    
-                            setPokemon(null);
+                        else {
                         }
                     }
                 );

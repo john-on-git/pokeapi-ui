@@ -41,7 +41,7 @@ export default function PokemonNameSearch({pokemonName, setPokemonNameCallbackFn
                             setPokemonNameCallbackFn(e.target.value);
                         }}
                         onFocus={()=>setIsFocused(true)}
-                        onBlur={()=>setTimeout(()=>setIsFocused(false), 1000)}
+                        onBlur={()=>setTimeout(()=>setIsFocused(false), 100)}
                     >
                     </input>
                     {
