@@ -31,7 +31,7 @@ export default function PokemonNameSearch({pokemonName, setPokemonNameCallbackFn
 
     return (
         <>
-            <div className="bubble-container flex-hor pokemon-search-container">
+            <div className="bubble-container pokemon-search-container">
                 <h1 className="pokemon-search">Pokémon Search</h1>
                 <div className="name-input-container">
                     <input
