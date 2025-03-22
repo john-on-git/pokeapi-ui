@@ -1,5 +1,7 @@
 .stats-display {
-    max-width: 25vw;
+    min-height: 94vh;
+
+    flex-grow: 1;
 }
 .stats-display table {
     margin-top: 10pt;

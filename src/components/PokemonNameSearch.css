@@ -1,7 +1,8 @@
 .pokemon-search-container {
-    height: 15vh;
     padding-left: 1rem;
     padding-right: 1rem;
+    
+    flex-grow: 1;
 }
 .pokemon-search-container h1 {
     font-size: 2vw;

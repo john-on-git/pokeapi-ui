@@ -1,6 +1,7 @@
 .move-list {
-    min-width: 25vw;
-    max-height: 100%;
+    height: 94vh;
+
+    flex-grow: 2;
 }
 
 .move-list > h2 {
