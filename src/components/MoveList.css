@@ -1,6 +1,7 @@
 .move-list {
-    min-width: 25vw;
-    max-height: 100%;
+    height: 94vh;
+
+    flex-grow: 2;
 }
 
 .move-list > h2 {
@@ -18,10 +19,7 @@
     margin-left: auto;
     margin-right: auto;
 
-    border: 10pt solid white;
-    border-right: 0;
-    box-sizing: border-box;
-    padding-right: 10pt;
+    padding: 10pt;
 
     background-color: white;
     border-radius: 10pt;
@@ -31,7 +29,7 @@
 
     height: 90%;
 }
-.move-list-panel > * {
+.move-list-panel > .accordion {
     scroll-snap-align: start;
     margin-bottom: 1rem;
 }

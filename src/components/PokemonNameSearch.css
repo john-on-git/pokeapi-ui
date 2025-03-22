@@ -1,15 +1,31 @@
-.name-input-wrapper {
+.pokemon-search-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+.pokemon-search-container h1 {
+    font-size: 2vw;
+    
+    display: flex;
+    align-items: center;
+}
+.name-input-container {
     width: 20rem;
 }
-.name-search {
-    text-align: center;
-
-
-    background-color: #00000080;
+.pokemon-search-container input {
+    background-color: crimson;
+    border: 3pt solid rgba(0, 0, 0, 0.2);
     border-radius: 10pt;
-
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+}
+.name-search {
+    width: 30rem;
 }
 .name-search, .pokemon-search {
     height: 3.5rem;
@@ -20,6 +36,7 @@
     z-index: 1;
 
     padding: 2rem;
+    margin-top: 20pt;
 
     width: 20rem;
     max-height: 18rem;

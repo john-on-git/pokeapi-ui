@@ -1,7 +1,8 @@
 #root {
   margin: 0 auto;
   
-  padding: 2rem;
+  padding: 1vw;
+
   box-sizing: border-box;
 
   text-align: center;
@@ -9,7 +10,7 @@
 
 @media (orientation: landscape) {
   #root {
-    height: 100vh;
+    height: 100%;
     overflow-y: hidden;
   }
 }

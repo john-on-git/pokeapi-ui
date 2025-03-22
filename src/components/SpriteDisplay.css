@@ -1,12 +1,16 @@
-.sprite-display {
-    height: 80vh;
 
+.sprite-display {
     background-color: white;
     border-radius: 10pt;
+
 }
 
 .sprite-display > img, .noimg {
     height: 100%;
+
+    max-height: 100%;
+    max-width: 100%;
+    
     image-rendering: crisp-edges;
 
     filter: drop-shadow(10px 10px 10px darkgrey);
@@ -30,4 +34,10 @@
 }
 .sprite-display > img:hover {
     animation: 1s shake linear 0s infinite;
+}
+
+@media (orientation: landscape) {
+    .sprite-display {    
+        flex-grow: 16;
+    }
 }

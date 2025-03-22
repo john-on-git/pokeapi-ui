@@ -19,7 +19,7 @@ export default function BaseStatsDisplay({stats}:Props) {
                     {
                         stats && stats.map((stat) => {
                             return (
-                                <tr className="stats-row">
+                                <tr key={stat.stat.name} className="stats-row">
                                     <td className={`bold ${stat.stat.name}`}>{stat.stat.name.replace("-", " ")}</td>
                                     <td>{stat.base_stat}</td>
                                 </tr>

@@ -47,43 +47,42 @@ export default function MoveList({moveProviders}:Props) {
     }, [moveProviders]);
 
     return (
-        <div className="move-list">
+        <div className="bubble-container move-list">
             <h2>moves</h2>
             <div className="move-list-panel">
-                    {moves.map((move, index) => {
-                        return <Accordion
-                            key={index}
-                            title={move.name}
-                            overrideColors = {colorFor(move.type)}
-                            content={ //convert the object into an HTML table
-                                <table>
-                                    <tbody>
+                {moves.map((move, index) => {
+                    return <Accordion
+                        key={index}
+                        title={move.name}
+                        overrideColors = {colorFor(move.type)}
+                        content={ //convert the object into an HTML table
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td className="bold">Type</td>
+                                        <td>{move.type}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="bold">Category</td>
+                                        <td>{move.damageClass}</td>
+                                    </tr>
+                                    {
+                                        move.power===null ? 
+                                        null : 
                                         <tr>
-                                            <td className="bold">Type</td>
-                                            <td>{move.type}</td>
+                                            <td className="bold">Power</td>
+                                            <td>{move.power}</td>
                                         </tr>
-                                        <tr>
-                                            <td className="bold">Category</td>
-                                            <td>{move.damageClass}</td>
-                                        </tr>
-                                        {
-                                            move.power===null ? 
-                                            null : 
-                                            <tr>
-                                                <td className="bold">Power</td>
-                                                <td>{move.power}</td>
-                                            </tr>
-                                        }
-                                        <tr>
-                                            <td className="bold">PP</td>
-                                            <td>{move.pp}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            }
-                        />
-                    }
-                    )}
+                                    }
+                                    <tr>
+                                        <td className="bold">PP</td>
+                                        <td>{move.pp}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    />
+                })}
             </div>
         </div>
     );
