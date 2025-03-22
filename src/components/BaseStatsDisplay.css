@@ -4,11 +4,12 @@
     flex-grow: 1;
 }
 .stats-display table {
+    width: 100%;
     margin-top: 10pt;
     margin-bottom: 10pt;
 
-    margin-left: 20pt;
-    margin-right: 20pt;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 .stats-display td {
     text-align: right;
