@@ -1,9 +1,18 @@
-.name-input-wrapper {
+.pokemon-search-container {
+    height: 15vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.pokemon-search-container h1 {
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+}
+.name-input-container {
     width: 20rem;
 }
 .name-search {
     text-align: center;
-
 
     background-color: #00000080;
     border-radius: 10pt;

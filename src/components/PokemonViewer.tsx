@@ -5,6 +5,8 @@ import { SpriteDisplay } from './SpriteDisplay';
 import './PokemonViewer.css';
 import PokemonNameSearch from './PokemonNameSearch';
 import BaseStatsDisplay from './BaseStatsDisplay';
+import { PokeAPIPokemonSpriteURL } from '../interfaces/PokeAPIURLs';
+import FormSelector from './FormSelector';
 
 export default function PokemonViewer() {
     
@@ -17,6 +19,7 @@ export default function PokemonViewer() {
     const [searchAutocomplete, setSearchAutocomplete] = useState<Map<string,Set<string>>>(new Map<string,Set<string>>()); //contains substrings of all pokemon names, and the corresponding autocomplete possibilites. Map is faster than Object for n≈1000 according to the data in this article https://www.zhenghao.io/posts/object-vs-map
     const [pokemonName, setPokemonName] = useState<string>("pikachu"); //use mew for movelist testing because it can learn moves of every type
     const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+    const [sprite, setSprite] = useState<PokeAPIPokemonSpriteURL | null>(null);
 
     useEffect(() => {
         async function BuildAutocomplete() {
@@ -57,11 +60,10 @@ export default function PokemonViewer() {
                     async (res) => {
                         if(res.ok) {
                             const newPokemon = await res.json();                 
-                            if(newPokemon!=null) { 
+                            if(newPokemon!=null) {
                                 setPokemon(newPokemon);
+                                setSprite(newPokemon.sprites.front_default); //also set the initial sprite to the default form
                             }
-                        }
-                        else {
                         }
                     }
                 );
@@ -69,16 +71,24 @@ export default function PokemonViewer() {
         }
         FetchPokemonByName(pokemonName);
     }, [pokemonName]);
+    useEffect(() => {
+
+    }, [pokemonName, pokemon]);
 
     return (
         <div className="pokemon-viewer">
             <MoveList moveProviders={pokemon===null ? [] : pokemon.moves}/>
             <div className="pokemon-viewer-mid-col">
-                <PokemonNameSearch pokemonName={pokemonName} setPokemonNameCallbackFn={setPokemonName} allAutocompletions={searchAutocomplete}/>
-                <SpriteDisplay imageURL={pokemon===null ? null : pokemon.sprites.front_default}/>
-                <div className="placeholder-form-select">
-                    Placeholder Form Select
-                </div>
+                <PokemonNameSearch
+                    pokemonName={pokemonName}
+                    setPokemonNameCallbackFn={setPokemonName}
+                    allAutocompletions={searchAutocomplete}
+                />
+                <SpriteDisplay imageURL={sprite}/>
+                <FormSelector
+                    forms={pokemon===null ? [] : pokemon.forms /*extract just the url from the wrapper object*/ }
+                    setSpriteCallbackFn={setSprite}
+                />
             </div>
             <BaseStatsDisplay stats={pokemon===null ? null : pokemon.stats}/>
         </div>

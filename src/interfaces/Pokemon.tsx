@@ -1,4 +1,4 @@
-import { PokeAPIPokemonSpriteURL } from "./PokeAPIURLs";
+import { PokeAPIFormURL, PokeAPIPokemonSpriteURL } from "./PokeAPIURLs";
 import { PokemonMoveProvider } from "./PokemonMove";
 
 export interface Pokemon { //is a subset of the API data structure and should remain that way
@@ -15,5 +15,9 @@ export interface Pokemon { //is a subset of the API data structure and should re
             name: string,
             url:string
         }
+    }[];
+    forms: {
+        name: string;
+        url: PokeAPIFormURL;
     }[];
 }

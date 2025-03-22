@@ -1,0 +1,34 @@
+.pokemon-form-selectors {
+    height: 25vh;
+
+    display: flex;
+    flex-direction: column;
+
+}
+.pokemon-form-selectors-header {
+    margin: 0.5rem;
+}
+
+.pokemon-form-selectors-body {
+    margin: 0;
+    
+    overflow-y: scroll;
+}
+
+.pokemon-form-selectors-button-scroller {
+    height: fit-content;
+
+    margin: 0;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    scroll-snap-type: y mandatory;
+}
+
+.pokemon-form-selectors-button-scroller > button {
+    scroll-snap-align: start;
+}
