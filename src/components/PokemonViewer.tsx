@@ -84,7 +84,22 @@ export default function PokemonViewer() {
                     setPokemonNameCallbackFn={setPokemonName}
                     allAutocompletions={searchAutocomplete}
                 />
-                <SpriteDisplay imageURL={sprite}/>
+                <SpriteDisplay
+                    imageURL={sprite}
+                    onSpriteClick={(event) => {
+                        const mainCssClass = "sprite-bounce";
+                        if(pokemon!==null && !event.currentTarget.classList.contains(mainCssClass)) {
+                            const cssClasses = [mainCssClass, (((Math.round(Math.random()*2)%2)===0) ? "sprite-twist-left" : "sprite-twist-right")];
+                            //play the cry audio
+                            const cry = new Audio(pokemon.cries.latest);
+                            cry.addEventListener("ended", (function (this: Element) { this.classList.remove(... cssClasses); } ).bind(event.currentTarget)); //listener to remove the visual effect class when the cry is finsihed
+                            cry.play();
+
+                            //do visual effect
+                            event.currentTarget.classList.add(... cssClasses);
+                        }
+                    }}
+                />
                 <FormSelector
                     forms={pokemon===null ? [] : pokemon.forms /*extract just the url from the wrapper object*/ }
                     setSpriteCallbackFn={setSprite}

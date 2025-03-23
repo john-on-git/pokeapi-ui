@@ -1,4 +1,4 @@
-import { PokeAPIFormURL, PokeAPIPokemonSpriteURL } from "./PokeAPIURLs";
+import { PokeAPICryLatestURL, PokeAPIFormURL, PokeAPIPokemonSpriteURL } from "./PokeAPIURLs";
 import { PokemonMoveProvider } from "./PokemonMove";
 
 export interface Pokemon { //is a subset of the API data structure and should remain that way
@@ -20,4 +20,7 @@ export interface Pokemon { //is a subset of the API data structure and should re
         name: string;
         url: PokeAPIFormURL;
     }[];
+    cries: {
+        latest: PokeAPICryLatestURL;
+    };
 }

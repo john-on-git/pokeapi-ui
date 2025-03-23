@@ -20,20 +20,51 @@
     cursor: pointer;
 }
 
-@keyframes shake {
-    0% {
-    }
-    25% {
-        transform: rotate(5deg);
-    }
-    75% {
-        transform: rotate(-4deg);
+@keyframes bounce {
+    5% {
+        transform: scale(1.1);
     }
     100% {
     }
 }
-.sprite-display > img:hover {
-    animation: 1s shake linear 0s infinite;
+
+@keyframes twist-left {
+    0% {
+    }
+    25% {
+        transform: rotate(3deg);
+    }
+    75% {
+        transform: rotate(-3deg);
+    }
+    100% {
+    }
+}
+@keyframes twist-right {
+    0% {
+    }
+    25% {
+        transform: rotate(-3deg);
+    }
+    75% {
+        transform: rotate(3deg);
+    }
+    100% {
+    }
+}
+.sprite-bounce {
+    /*animation: 0.5s bounce ease-in-out 0s; */ /*actually it only works if both animations are on the same class*/
+    cursor: default !important;
+}
+.sprite-twist-left {
+    animation-name: bounce, twist-left;
+    animation-duration: 1s, 1s;
+    animation-timing-function: ease-out, linear;
+}
+.sprite-twist-right {
+    animation-name: bounce, twist-right;
+    animation-duration: 1s, 1s;
+    animation-timing-function: ease-out, linear;
 }
 
 @media (orientation: landscape) {
