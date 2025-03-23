@@ -32,7 +32,7 @@ export default function MoveList({moveProviders}:Props) {
                                 damageClass: data.damage_class.name,
                                 power: data.power,
                                 pp: data.pp,
-                                effect: (data.effect_entries.length>0 ? data.effect_entries[0].effect : "")
+                                effect: (data.effect_entries.length>0 ? data.effect_entries[0].effect.replace("Inflicts regular damage.", "").trim() : "")
                             });
                         }
                         else {
@@ -70,7 +70,8 @@ export default function MoveList({moveProviders}:Props) {
                                     </tr>
                                     {
                                         move.power===null ? 
-                                        null : 
+                                        null
+                                        : 
                                         <tr>
                                             <td className="bold">Power</td>
                                             <td>{move.power}</td>
@@ -82,7 +83,12 @@ export default function MoveList({moveProviders}:Props) {
                                     </tr>
                                 </tbody>
                             </table>
-                            <p>{move.effect}</p>
+                            {
+                                move.effect.length>0 ?
+                                <p>{move.effect}</p>
+                                : 
+                                null
+                            }
                             </>
                         }
                     />
