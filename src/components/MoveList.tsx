@@ -31,7 +31,8 @@ export default function MoveList({moveProviders}:Props) {
                                 type: data.type.name,
                                 damageClass: data.damage_class.name,
                                 power: data.power,
-                                pp: data.pp
+                                pp: data.pp,
+                                effect: (data.effect_entries.length>0 ? data.effect_entries[0].effect : "")
                             });
                         }
                         else {
@@ -56,6 +57,7 @@ export default function MoveList({moveProviders}:Props) {
                         title={move.name}
                         overrideColors = {colorFor(move.type)}
                         content={ //convert the object into an HTML table
+                            <>
                             <table>
                                 <tbody>
                                     <tr>
@@ -80,6 +82,8 @@ export default function MoveList({moveProviders}:Props) {
                                     </tr>
                                 </tbody>
                             </table>
+                            <p>{move.effect}</p>
+                            </>
                         }
                     />
                 })}

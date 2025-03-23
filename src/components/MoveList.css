@@ -33,3 +33,10 @@
     scroll-snap-align: start;
     margin-bottom: 1rem;
 }
+
+.move-list-panel > .accordion > .accordion-body > p {
+    max-width: 10vw;
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+}

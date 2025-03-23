@@ -8,6 +8,7 @@ export interface PokemonMove {
     damageClass: ("status" | "physical" | "special");
     power: (number | null);
     pp: number;
+    effect: string;
 }
 
 export interface PokemonMoveProvider { //from API data, provides URL needed to get full move data
