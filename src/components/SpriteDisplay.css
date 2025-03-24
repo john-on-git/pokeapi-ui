@@ -3,6 +3,7 @@
     background-color: white;
     border-radius: 10pt;
 
+    height: 50vh;
 }
 
 .sprite-display > img, .noimg {

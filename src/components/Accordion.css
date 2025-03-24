@@ -1,3 +1,6 @@
+
+.accordion {
+}
 .accordion-header {
     background-color: crimson;
     transition: background-color 0.25s;
@@ -8,6 +11,7 @@
     padding-bottom: 6pt;
     margin: 0;
 
+    color: white !important;
     font-size: 1.35rem;
     font-weight: bold;
 
