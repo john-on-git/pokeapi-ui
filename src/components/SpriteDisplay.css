@@ -11,7 +11,7 @@
     max-height: 100%;
     max-width: 100%;
     
-    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 
     filter: drop-shadow(10px 10px 10px darkgrey);
 
