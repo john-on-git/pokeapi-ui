@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { usePokemonAutocompletions } from "../hooks/useAutocompletions";
 import "./PokemonNameSearch.css";
@@ -14,19 +13,7 @@ export default function PokemonNameSearch(props: Props) {
 
     const autoCompletions = usePokemonAutocompletions(props.pokemonName);
 
-    const asList: ReactNode[] = [];
     //get the autocompletions for the current pokemonName
-
-    autoCompletions.map((autoCompletion) => (
-        <button
-            className="autocompletion poke-button"
-            type="button"
-            key={autoCompletion}
-            onClick={() => props.setPokemonName(autoCompletion)}
-        >
-            {autoCompletion}
-        </button>
-    ));
 
     return (
         <>
@@ -46,8 +33,17 @@ export default function PokemonNameSearch(props: Props) {
                     </input>
                     {
                         isFocused ?
-                            <div className="autocompletions" style={{ display: ((asList.length === 0) ? "none" : "") }}>
-                                {asList}
+                            <div className="autocompletions" style={{ display: ((autoCompletions.length === 0) ? "none" : "") }}>
+                                {autoCompletions.map((autoCompletion) => (
+                                    <button
+                                        className="autocompletion poke-button"
+                                        type="button"
+                                        key={autoCompletion}
+                                        onClick={() => props.setPokemonName(autoCompletion)}
+                                    >
+                                        {autoCompletion}
+                                    </button>
+                                ))}
                             </div>
                             :
                             null
