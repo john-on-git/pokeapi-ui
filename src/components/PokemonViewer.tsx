@@ -10,7 +10,7 @@ import { SpriteDisplay } from './SpriteDisplay';
 
 
 export default function PokemonViewer() {
-    const [pokemonName, setPokemonName] = useState<string>("pikachu"); // use mew for movelist testing because it can learn moves of every type
+    const [pokemonName, setPokemonName] = useState<string>("mew"); // use mew for movelist testing because it can learn moves of every type
     const [pokemon, setPokemon] = useState<Pokemon | null>(null);
     const [sprite, setSprite] = useState<PokeAPIPokemonSpriteURL | null>(null);
 
@@ -40,9 +40,9 @@ export default function PokemonViewer() {
 
     }, [pokemonName, pokemon]);
 
-    return (
+    return pokemon === null ? <></> : (
         <div className="pokemon-viewer">
-            <MoveList moveProviders={pokemon === null ? [] : pokemon.moves} />
+            <MoveList pokemon={pokemon} />
             <div className="pokemon-viewer-mid-col">
                 <PokemonNameSearch
                     pokemonName={pokemonName}

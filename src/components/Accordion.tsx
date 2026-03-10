@@ -1,4 +1,4 @@
-import type { ReactNode} from "react";
+import type { ReactNode } from "react";
 import { useState } from "react";
 import './Accordion.css';
 
@@ -17,14 +17,14 @@ interface Props {
         2. table styling
 */
 
-export default function Accordion({title, content, overrideColors }:Props) {
+export default function Accordion({ title, content, overrideColors }: Props) {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     return (
         <div className={"accordion " + (isOpen ? "accordion-open" : "accordion-closed")}> {/*closed*/}
             <button
                 type="button"
-                style={overrideColors && (isHovered ? {backgroundColor: overrideColors.onHover} : {backgroundColor: overrideColors.noHover})}
+                style={overrideColors && (isHovered ? { backgroundColor: overrideColors.onHover } : { backgroundColor: overrideColors.noHover })}
                 className={"accordion-header"}
                 onClick={() => setIsOpen(!isOpen)}
                 onMouseEnter={() => setIsHovered(true)}
