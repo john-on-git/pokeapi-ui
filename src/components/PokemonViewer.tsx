@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import MoveList from '../components/MoveList';
+import { usePokemon } from '../hooks/usePokemon';
 import type { PokeAPIPokemonSpriteURL } from '../interfaces/PokeAPIURLs';
 import type { Pokemon } from '../interfaces/Pokemon';
 import BaseStatsDisplay from './BaseStatsDisplay';
@@ -11,36 +12,18 @@ import { SpriteDisplay } from './SpriteDisplay';
 
 export default function PokemonViewer() {
     const [pokemonName, setPokemonName] = useState<string>("pikachu"); // use mew for movelist testing because it can learn moves of every type
-    const [pokemon, setPokemon] = useState<Pokemon | null>(null);
-    const [sprite, setSprite] = useState<PokeAPIPokemonSpriteURL | null>(null);
+    const { data: pokemon, status: pokemonStatus } = usePokemon(pokemonName);
 
+    const [spriteFor, setSpriteFor] = useState<Pokemon | null>(null);
+    const [spriteURL, setSpriteURL] = useState<PokeAPIPokemonSpriteURL | null>(null);
 
-    useEffect(() => {
-        async function FetchPokemonByName(pokemonName: (string)) {
-            if (pokemonName === "") { //a blank string result in a call to the index endpoint, returns OK but with a different type
-                return null;
-            }
-            else {
-                await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`).then(
-                    async (res) => {
-                        if (res.ok) {
-                            const newPokemon = await res.json();
-                            if (newPokemon != null) {
-                                setPokemon(newPokemon);
-                                setSprite(newPokemon.sprites.front_default); //also set the initial sprite to the default form
-                            }
-                        }
-                    }
-                );
-            }
-        }
-        FetchPokemonByName(pokemonName);
-    }, [pokemonName]);
-    useEffect(() => {
+    // reset the sprite whenever the pokemon changes
+    if (pokemonStatus === "success" && spriteFor !== pokemon && pokemon !== null) {
+        setSpriteFor(pokemon);
+        setSpriteURL(pokemon.sprites.front_default); //also set the initial sprite to the default form
+    }
 
-    }, [pokemonName, pokemon]);
-
-    return pokemon === null ? <></> : (
+    return (
         <div className="pokemon-viewer">
             <MoveList pokemon={pokemon} />
             <div className="pokemon-viewer-mid-col">
@@ -49,7 +32,7 @@ export default function PokemonViewer() {
                     setPokemonName={setPokemonName}
                 />
                 <SpriteDisplay
-                    imageURL={sprite}
+                    imageURL={spriteURL}
                     onSpriteClick={(event) => {
                         const mainCssClass = "sprite-bounce";
                         if (pokemon !== null && !event.currentTarget.classList.contains(mainCssClass)) {
@@ -67,7 +50,7 @@ export default function PokemonViewer() {
                 />
                 <FormSelector
                     forms={pokemon === null ? [] : pokemon.forms /*extract just the url from the wrapper object*/}
-                    setSpriteCallbackFn={setSprite}
+                    setSpriteCallbackFn={setSpriteURL}
                 />
             </div>
             <BaseStatsDisplay stats={pokemon === null ? null : pokemon.stats} />
