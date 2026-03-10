@@ -20,7 +20,7 @@ export function useSpriteURL(pokemon: SpriteDisplayProps['pokemon'], sprite: Spr
                 if (pokemon !== null) {
                     setSpriteURL(pokemon.sprites.front_default);
                 }
-                // else the pokemn hasn't loaded yet, the effect will trigger again once it is
+                // else the pokemon hasn't loaded yet, the effect will trigger again once it is
             }
             // otherwise we need to make an API request to get the image
             else {
