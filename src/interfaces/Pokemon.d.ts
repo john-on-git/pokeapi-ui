@@ -1,19 +1,22 @@
-import { PokeAPICryLatestURL, PokeAPIFormURL, PokeAPIPokemonSpriteURL } from "./PokeAPIURLs";
-import { PokemonMoveProvider } from "./PokemonMove";
+import type { PokeAPICryLatestURL, PokeAPIFormURL, PokeAPIPokemonSpriteURL } from "./PokeAPIURLs";
+import type { PokemonMoveProvider } from "./PokemonMove";
 
-export interface Pokemon { //is a subset of the API data structure and should remain that way
+export type PokemonOverview = {
     name: string;
+}
+
+export type Pokemon = PokemonOverview & {
     moves: PokemonMoveProvider[];
     sprites: {
         front_default: PokeAPIPokemonSpriteURL;
         //and more
     };
     stats: {
-        base_stat:number, 
-        effort:number, 
+        base_stat: number,
+        effort: number,
         stat: {
             name: string,
-            url:string
+            url: string
         }
     }[];
     forms: {

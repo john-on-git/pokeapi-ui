@@ -1,4 +1,4 @@
-import { PokeAPIFormURL } from "./PokeAPIURLs";
+import type { PokeAPIFormURL } from "./PokeAPIURLs";
 
 export interface PokemonForm {
     name: string;

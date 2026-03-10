@@ -1,5 +1,5 @@
-import { PokeAPIMoveURL } from "./PokeAPIURLs";
-import { PokemonType } from "./PokemonType";
+import type { PokeAPIMoveURL } from "./PokeAPIURLs";
+import type { PokemonType } from "./PokemonType";
 
 export interface PokemonMove {
     name: string;

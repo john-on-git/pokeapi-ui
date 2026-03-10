@@ -1,33 +1,32 @@
-import { ReactNode, useState } from "react";
+import type { ReactNode } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
+import { usePokemonAutocompletions } from "../hooks/useAutocompletions";
 import "./PokemonNameSearch.css";
+
 
 interface Props {
     pokemonName: string;
-    setPokemonNameCallbackFn: ((pokemonName: string) => void);
-    allAutocompletions: Map<string, Set<string>>;
+    setPokemonName: Dispatch<SetStateAction<string>>;
 }
-export default function PokemonNameSearch({ pokemonName, setPokemonNameCallbackFn, allAutocompletions }: Props) {
+
+export default function PokemonNameSearch(props: Props) {
     const [isFocused, setIsFocused] = useState(false);
 
+    const autoCompletions = usePokemonAutocompletions(props.pokemonName);
+
     const asList: ReactNode[] = [];
-
     //get the autocompletions for the current pokemonName
-    const autoCompletions = allAutocompletions.get(pokemonName);
-    if (autoCompletions !== undefined) {
-        autoCompletions.forEach((autocompletion) => asList.push(
-            <button
-                className="autocompletion poke-button"
-                type="button"
-                key={autocompletion}
-                onClick={() => {
 
-                    setPokemonNameCallbackFn(autocompletion)
-                }}
-            >
-                {autocompletion}
-            </button>
-        ));
-    }
+    autoCompletions.map((autoCompletion) => (
+        <button
+            className="autocompletion poke-button"
+            type="button"
+            key={autoCompletion}
+            onClick={() => props.setPokemonName(autoCompletion)}
+        >
+            {autoCompletion}
+        </button>
+    ));
 
     return (
         <>
@@ -37,9 +36,9 @@ export default function PokemonNameSearch({ pokemonName, setPokemonNameCallbackF
                     <input
                         className="name-search bold"
                         type="text"
-                        value={pokemonName}
+                        value={props.pokemonName}
                         onChange={(e) => {
-                            setPokemonNameCallbackFn(e.target.value);
+                            props.setPokemonName(e.target.value);
                         }}
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setTimeout(() => setIsFocused(false), 100)}

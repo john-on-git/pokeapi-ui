@@ -1,5 +1,5 @@
-import { SyntheticEvent } from "react";
-import { PokeAPIPokemonSpriteURL } from "../interfaces/PokeAPIURLs";
+import type { SyntheticEvent } from "react";
+import type { PokeAPIPokemonSpriteURL } from "../interfaces/PokeAPIURLs";
 import './SpriteDisplay.css';
 
 interface Props {
