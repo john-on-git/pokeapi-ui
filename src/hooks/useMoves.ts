@@ -11,17 +11,24 @@ type MovesAPIResponse = {
     };
     power: number;
     pp: number;
-    effect_entries: { effect: string }[]
+    effect_entries: {
+        effect: string;
+        language: {
+            name: string;
+        };
+    }[]
 };
 
 function mapAPIResponseToMove(apiMove: MovesAPIResponse): PokemonMove {
+    const localisedEffect = apiMove.effect_entries.find(entry => navigator.language.includes(entry.language.name)); // should prob use languages by priority
+    const effectFormatted = localisedEffect === undefined ? "" : (localisedEffect.language.name.startsWith("en") ? localisedEffect.effect.replace("Inflicts regular damage.", "").trim() : localisedEffect.effect.trim());
     return {
         name: apiMove.name,
         type: apiMove.type.name,
         damageClass: apiMove.damage_class.name,
         power: apiMove.power,
         pp: apiMove.pp,
-        effect: (apiMove.effect_entries.length > 0 ? apiMove.effect_entries[0].effect.replace("Inflicts regular damage.", "").trim() : "")
+        effect: effectFormatted
     }
 }
 

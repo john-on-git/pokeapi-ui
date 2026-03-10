@@ -20,7 +20,7 @@ export default function MoveList(props: Props) {
                         key={index}
                         title={move.name}
                         overrideColors={getColorForType(move.type)}
-                        content={ //convert the object into an HTML table
+                        content={
                             <>
                                 <table>
                                     <tbody>
