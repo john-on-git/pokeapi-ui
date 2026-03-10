@@ -7,15 +7,15 @@ interface Props {
     onSpriteClick: ((event: SyntheticEvent) => void);
 }
 
-export function SpriteDisplay({imageURL, onSpriteClick}: Props) {
+export function SpriteDisplay({ imageURL, onSpriteClick }: Props) {
     return (
-        imageURL===null ?
-        <div className="sprite-display">
-            <div className="noimg"></div>
-        </div>
-        :
-        <div className="sprite-display">
-            <img src={imageURL} onClick={onSpriteClick}/>
-        </div>
+        imageURL === null ?
+            <div className="sprite-display">
+                <div className="noimg"></div>
+            </div>
+            :
+            <div className="sprite-display">
+                <img src={imageURL} onClick={onSpriteClick} />
+            </div>
     );
 }

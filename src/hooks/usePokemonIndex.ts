@@ -8,7 +8,7 @@ import type { AsyncFetchingHookResult, AsyncResourceStatus } from "../interfaces
  */
 export function usePokemonIndex(): AsyncFetchingHookResult<PokemonOverview[]> {
     const [pokemons, setPokemons] = useState<PokemonOverview[] | null>(null);
-    const [status, setStatus] = useState<AsyncResourceStatus>("pending");
+    const [failureReason, setFailureReason] = useState<AsyncResourceStatus & ("pending" | "error")>("pending");
 
     useEffect(() => {
         async function fetchPokemon() {
@@ -17,19 +17,18 @@ export function usePokemonIndex(): AsyncFetchingHookResult<PokemonOverview[]> {
                 if (res.ok) {
                     const allPokemon: { results: { name: string }[] } = await res.json();
                     setPokemons(allPokemon.results);
-                    setStatus("success");
                 }
                 else {
-                    setStatus("error");
+                    setFailureReason("error");
                 }
             }
             catch (e) {
                 console.error(e);
-                setStatus("error");
+                setFailureReason("error");
             }
         }
         fetchPokemon()
     }, [])
 
-    return { data: pokemons, status }
+    return pokemons !== null ? { data: pokemons, status: "success" } : { data: pokemons, status: failureReason };
 }
