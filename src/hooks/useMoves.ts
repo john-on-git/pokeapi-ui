@@ -39,13 +39,13 @@ export function useMoves(moveProviders: PokemonMoveProvider[]): AsyncFetchingHoo
 
     useEffect(() => {
         //get the list of moves for the pokemon
-        async function fetchMoves() {
+        async function fetchMoves(): Promise<void> {
             try {
                 //get all the move names & data sources
                 //get the data for each move, and transform it into our format
                 const moves = await Promise.all(moveProviders.map(async (moveProvider: PokemonMoveProvider) => {
                     const response = await fetch(moveProvider.move.url);
-                    if (response.ok) {
+                    if (response.ok) { // TODO check that the queryKey is still valid before continuing
                         //parse move data from API
                         const data = await response.json() as MovesAPIResponse;
                         return mapAPIResponseToMove(data);

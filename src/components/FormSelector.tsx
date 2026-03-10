@@ -1,35 +1,32 @@
-import type { PokeAPIPokemonSpriteURL } from "../interfaces/PokeAPIURLs";
+import type { Dispatch, SetStateAction } from "react";
 import type { PokemonForm } from "../interfaces/PokemonForm";
 import "./FormSelector.css";
+import type { SpriteDisplayProps } from "./SpriteDisplay";
 
-interface Props {
+export interface Props {
     forms: PokemonForm[];
-    setSpriteCallbackFn: ((sprite: PokeAPIPokemonSpriteURL) => void)
+    setActiveSprite: Dispatch<SetStateAction<SpriteDisplayProps>>;
 }
 
-export default function FormSelector({ forms, setSpriteCallbackFn }: Props) {
+export default function FormSelector(props: Props) {
     return (
         <div className="bubble-container pokemon-form-selectors">
             <h2 className="pokemon-form-selectors-header">forms</h2>
             <div className="pokemon-form-selectors-body">
                 <div className="pokemon-form-selectors-button-scroller">
                     {
-                        forms.map((form) => {
+                        props.forms.map((form, iForm) => {
                             return (
                                 <button
                                     key={form.name}
                                     type="button"
                                     className="pokemon-form-selector poke-button"
-                                    onClick={async () => {
-                                        fetch(form.url).then(async (res) => {
-                                            if (res.ok) {
-                                                const json: { sprites: { front_default: PokeAPIPokemonSpriteURL } } = await res.json();
-                                                if (json !== null) {
-                                                    setSpriteCallbackFn(json.sprites.front_default);
-                                                }
-                                            }
-                                        })
-                                    }}
+                                    onClick={
+                                        () => props.setActiveSprite((prev) => ({
+                                            ...prev,
+                                            sprite: iForm,
+                                        }))
+                                    }
                                 >
                                     {form.name}
                                 </button>
@@ -38,6 +35,6 @@ export default function FormSelector({ forms, setSpriteCallbackFn }: Props) {
                     }
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

@@ -15,7 +15,7 @@ export function usePokemon(pokemonName: string): AsyncFetchingHookResult<Pokemon
                 try {
                     await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`).then(
                         async (res) => {
-                            if (res.ok) {
+                            if (res.ok) { // TODO check that the queryKey is still valid before continuing
                                 const newPokemon = await res.json();
                                 if (newPokemon != null) {
                                     setPokemon(newPokemon);

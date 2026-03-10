@@ -11,10 +11,10 @@ export function usePokemonIndex(): AsyncFetchingHookResult<PokemonOverview[]> {
     const [failureReason, setFailureReason] = useState<AsyncResourceStatus & ("pending" | "error")>("pending");
 
     useEffect(() => {
-        async function fetchPokemon() {
+        async function fetchPokemon(): Promise<void> {
             try {
                 const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=5000`);
-                if (res.ok) {
+                if (res.ok) { // TODO check that the queryKey is still valid before continuing
                     const allPokemon: { results: { name: string }[] } = await res.json();
                     setPokemons(allPokemon.results);
                 }
