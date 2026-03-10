@@ -54,8 +54,9 @@ export default function PokemonViewer() {
                         const mainCssClass = "sprite-bounce";
                         if (pokemon !== null && !event.currentTarget.classList.contains(mainCssClass)) {
                             const cssClasses = [mainCssClass, (((Math.round(Math.random() * 2) % 2) === 0) ? "sprite-twist-left" : "sprite-twist-right")];
-                            //play the cry audio
+                            // play the cry audio
                             const cry = new Audio(pokemon.cries.latest);
+                            cry.volume = 0.1; // reduce the volume because the default is really loud on my machine 
                             cry.addEventListener("ended", (function (this: Element) { this.classList.remove(...cssClasses); }).bind(event.currentTarget)); //listener to remove the visual effect class when the cry is finsihed
                             cry.play();
 
